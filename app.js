@@ -29,3 +29,60 @@ async function fetchNotes() {
         return [];
     }
 }
+
+function displayNotes() {
+    let notesToDisplay = document.getElementById("display-notes");
+
+    notesToDisplay.innerHTML = "";
+    studyNotes.forEach(note => {
+        notesToDisplay.innerHTML = `
+            <div class="notes-card">
+                <p>${note.title}</p>
+                <p>${note.description}</p>
+                <div class="topicAndPriority">
+                    <p>Topic Name: ${note.topic}</p>
+                    <p>Priority: ${note.priority}</p>
+                </div>
+                <p class="topicDate">Date Created: ${note.createdAt}</p>
+                <div class="notes-action-btns">
+                    <button class="editBtn">Edit</button>
+                    <button class="deleteBtn">Delete</button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+async function createNewNotes() {
+    let titleInput = document.getElementById("title-input");
+    let notesDescp = document.getElementById("content-input");
+    let selectTopic = document.getElementById("topic-selection").value;
+    let selectPriority = document.getElementById("priority-selection").value;
+    let imageInput = document.getElementById("notes-image-input");
+    let formMsg = document.getElementById("formMsg");
+
+    let titleValue = titleInput.value;
+    let descpValue = notesDescp.value;
+    let imageValue = imageInput.value;
+
+
+    if (!titleValue && !descpValue && !imageValue && selectTopic === "" && selectPriority === "") {
+        formMsg.textContent = "All fields are required!";
+        formMsg.style.color = "red";
+    }
+
+    let formData = {
+        title: titleValue,
+        description: descpValue,
+        imageUrl: imageValue,
+        topic: selectTopic,
+        priority: selectPriority,
+        createdAt: new Date(),
+    }
+
+    await fetch(`${firebaseUrl}/notes.json`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+    });
+}

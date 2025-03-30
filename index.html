@@ -73,7 +73,7 @@
         <section id="create-notes">
             <h2>Create New Study Note</h2>
 
-            <form class="notes-creation-form">
+            <form id="notes-creation-form" onsubmit="createNewNotes()">
                 <input type="text" id="title-input" placeholder="Enter notes title...">
                 <textarea id="content-input" cols="50" rows="4" placeholder="Enter notes description"></textarea>
                 <select id="topic-selection">
@@ -119,20 +119,6 @@
             </div>
 
             <div id="display-notes">
-                <div class="notes-card">
-                    <img src="${note.imageUrl}" alt="${note.title}">
-                    <p>${note.description}</p>
-                    <div class="topicAndPriority">
-                        <p>Topic Name: ${note.topic}</p>
-                        <p>Priority: ${note.priority}</p>
-                    </div>
-                    <p class="topicDate">Date Created: ${note.createdAt}</p>
-                    <div class="notes-action-btns">
-                        <button class="editBtn">Edit</button>
-                        <button class="deleteBtn">Delete</button>
-                    </div>
-                </div>
-
                 <p id="notesMsg"></p>
             </div>
         </section>
@@ -177,7 +163,7 @@
         </ul>
     </footer>
 
-    <script src=""></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
