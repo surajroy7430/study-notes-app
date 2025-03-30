@@ -1,0 +1,12 @@
+{
+    "notes": {
+        "note1": {
+            "title": "sample Title",
+            "description": "sample description",
+            "imageUrl": "https://sampleexample.jpg",
+            "topic": "sample topic",
+            "priority": "priority",
+            "createdAt": "creation date"
+        }
+    }
+}

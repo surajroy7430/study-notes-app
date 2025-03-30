@@ -23,7 +23,6 @@ async function fetchNotes() {
 
         return studyNotes;
     } catch (error) {
-        console.log(error);
         notesMsg.textContent = "Error fetching notes. Please try again later.";
         notesMsg.style.color = "red";
         return [];
@@ -35,7 +34,7 @@ function displayNotes() {
 
     notesToDisplay.innerHTML = "";
     studyNotes.forEach(note => {
-        notesToDisplay.innerHTML = `
+        notesToDisplay.innerHTML += `
             <div class="notes-card">
                 <p>${note.title}</p>
                 <p>${note.description}</p>
@@ -65,8 +64,7 @@ async function createNewNotes() {
     let descpValue = notesDescp.value;
     let imageValue = imageInput.value;
 
-
-    if (!titleValue && !descpValue && !imageValue && selectTopic === "" && selectPriority === "") {
+    if (!titleValue && !descpValue && selectTopic === "" && selectPriority === "") {
         formMsg.textContent = "All fields are required!";
         formMsg.style.color = "red";
     }
@@ -80,9 +78,14 @@ async function createNewNotes() {
         createdAt: new Date(),
     }
 
-    await fetch(`${firebaseUrl}/notes.json`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-    });
+    try {
+        await fetch(`${firebaseUrl}/notes.json`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+    } catch (error) {
+        formMsg.textContent = "error adding new notes";
+        formMsg.style.color = "red";
+    }
 }

@@ -76,6 +76,8 @@
             <form id="notes-creation-form" onsubmit="createNewNotes()">
                 <input type="text" id="title-input" placeholder="Enter notes title...">
                 <textarea id="content-input" cols="50" rows="4" placeholder="Enter notes description"></textarea>
+                <input type="text" id="notes-image-input" placeholder="Enter image url...">
+                
                 <select id="topic-selection">
                     <option value="">--Select Topic--</option>
                     <option value="dsa">DSA</option>
@@ -90,7 +92,6 @@
                     <option value="medium">Medium</option>
                     <option value="low">Low</option>
                 </select>
-                <input type="file" id="notes-image-input">
                 <button type="submit">Create Notes</button>
 
                 <p id="formMsg"></p>
