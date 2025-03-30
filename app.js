@@ -84,6 +84,18 @@ async function createNewNotes() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
         });
+
+        formMsg.textContent = "Notes added successfully!";
+
+        setTimeout(() => {
+            formMsg.textContent = "";
+        }, 3000);
+
+        titleInput.value = "";
+        notesDescp.value = "";
+        selectTopic.value = "";
+        selectPriority.value = "";
+        imageInput.value = "";
     } catch (error) {
         formMsg.textContent = "error adding new notes";
         formMsg.style.color = "red";
