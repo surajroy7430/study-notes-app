@@ -2,15 +2,182 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
     <link rel="stylesheet" href="style.css">
     <title>Study Notes Web App</title>
 </head>
+
 <body>
-    
+    <!-- Home Page -->
+    <header>
+        <a href="#">
+            <img src="https://i.ibb.co/4wGWk0Wm/2tuju-19-removebg-preview.png" alt="study-notes-logo" class="logo">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#create-notes">Create Notes</a></li>
+                <li><a href="#view-notes">View Notes</a></li>
+                <li><a href="#setting">Setting</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- For Home Page -->
+        <section id="home">
+            <h2>Welcome to the Collaborative Study Notes App!</h2>
+            <div class="home-page-description">
+                <p>
+                    Study notes are concise, organized records of key information from lectures, readings,
+                    or other learning materials, designed to aid in understanding, remembering, and reviewing
+                    material for effective learning and preparation for exams or assignments.
+                </p>
+                <ul>
+                    <li>Purpose and Benefits</li>
+                    <li>
+                        Enhanced Learning:
+                        <p>Study notes help you actively engage with the material, process information, and identify key
+                            concepts.
+                        </p>
+                    </li>
+                    <li>Improved Retention:
+                        <p>
+                            By summarizing and rewriting information in your own words, you reinforce your understanding
+                            and improve recall.
+                        </p>
+                    </li>
+                    <li>Personalized Learning:
+                        <p>
+                            They allow you to create a study guide tailored to your individual learning style and needs.
+                        </p>
+                    </li>
+                    <li>Organization:
+                        <p>
+                            Study notes help organize information in a logical and structured manner, making it easier
+                            to find and access information.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Create Notes Page -->
+        <section id="create-notes">
+            <h2>Create New Study Note</h2>
+
+            <form class="notes-creation-form">
+                <input type="text" id="title-input" placeholder="Enter notes title...">
+                <textarea id="content-input" cols="50" rows="4" placeholder="Enter notes description"></textarea>
+                <select id="topic-selection">
+                    <option value="">--Select Topic--</option>
+                    <option value="dsa">DSA</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="react">React JS</option>
+                </select>
+                <select id="priority-selection">
+                    <option value="">--Select Priority--</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+                <input type="file" id="notes-image-input">
+                <button type="submit">Create Notes</button>
+
+                <p id="formMsg"></p>
+            </form>
+        </section>
+
+        <!-- View Notes -->
+        <section id="view-notes">
+            <h2>Your Study Notes</h2>
+
+            <div class="notes-filter">
+                <select id="priority-filter">
+                    <option value="">--Select Filter Priority--</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+
+                <select id="sort-notes">
+                    <option value="">--Sort Notes--</option>
+                    <option value="asc-notes">Low to High</option>
+                    <option value="desc-notes">High to Low</option>
+                </select>
+
+                <input type="text" id="search-input" placeholder="Search by title">
+            </div>
+
+            <div id="display-notes">
+                <div class="notes-card">
+                    <img src="${note.imageUrl}" alt="${note.title}">
+                    <p>${note.description}</p>
+                    <div class="topicAndPriority">
+                        <p>Topic Name: ${note.topic}</p>
+                        <p>Priority: ${note.priority}</p>
+                    </div>
+                    <p class="topicDate">Date Created: ${note.createdAt}</p>
+                    <div class="notes-action-btns">
+                        <button class="editBtn">Edit</button>
+                        <button class="deleteBtn">Delete</button>
+                    </div>
+                </div>
+
+                <p id="notesMsg"></p>
+            </div>
+        </section>
+
+        <!-- Setting Page -->
+        <section id="setting">
+            <h2>App Setting</h2>
+
+            <div class="toggleDarkMode">
+                <select id="select-theme">
+                    <option value="">--Change Theme--</option>
+                    <option value="dark-theme">Dark Mode</option>
+                    <option value="light-theme">Light Mode</option>
+                </select>
+
+                <button id="notes-clear-button">Clear Notes</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <ul class="contact-info">
+            <li><a href="#surajroy7430@gmail.com">Gmail</a></li>
+            <li><a href="#8770505673">Phone</a></li>
+            <li>
+                <a href="https://github.com/surajroy7430"><i class="ph-fill ph-github-logo"></i></a>
+            </li>
+        </ul>
+
+        <p class="copyright">Study Notes App &copy; 2025</p>
+
+        <ul class="social-links">
+            <li>
+                <a href="#facebooks"><i class="ph-fill ph-facebook-logo"></i></a>
+            </li>
+            <li>
+                <a href="#intagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </li>
+            <li>
+                <a href="#linkedin"><i class="ph-fill ph-linkedin-logo"></i></a>
+            </li>
+        </ul>
+    </footer>
 
     <script src=""></script>
 </body>
+
 </html>
