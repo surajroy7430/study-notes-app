@@ -5,6 +5,7 @@ let studyNotes = [];
 document.addEventListener("DOMContentLoaded", async () => {
     let studyNotes = await fetchNotes();
     console.log(studyNotes);
+    displayNotes();
 });
 
 async function fetchNotes() {
